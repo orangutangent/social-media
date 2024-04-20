@@ -85,7 +85,7 @@ const NavPanel = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: "-100px" }}
       transition={{ duration: 0.3 }}
-      className="bg-slate-950 w-full h-16 fixed "
+      className="bg-slate-950 w-full h-16 fixed z-20 "
     >
       <div className="flex justify-center items-center gap-10 h-full">
         {links.map((link) =>

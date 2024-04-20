@@ -9,13 +9,14 @@ const UserPage = ({ params }: { params: { username: string } }) => {
   const { username } = params;
   const { data: currentUser } = useCurrentUser();
   const { data: fetchedUser } = useUser(username);
-  console.log(fetchedUser?.followersIds);
   const { data: posts, isLoading } = useUserPosts(fetchedUser?.id);
   if (fetchedUser && fetchedUser.username) {
     return (
       <div>
         <UserBio user={fetchedUser} />
-        <PostFeed posts={posts} isLoading={isLoading} username={username} />
+        <div className="mt-4">
+          <PostFeed posts={posts} isLoading={isLoading} username={username} />
+        </div>
       </div>
     );
   }

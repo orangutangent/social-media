@@ -89,85 +89,92 @@ const CreatePost = () => {
   };
   if (!session?.user) {
     return (
-      <Container>
-        <h1 className="text-2xl font-bold m-4">
-          You need to be logged in to create a post
-        </h1>
-        <div className="flex gap-6 justify-center m-4">
-          <Button actionLabel="Sign In" onClick={() => loginModal.setOpen()} />
-          <Button
-            secondary
-            actionLabel="Sign Up"
-            onClick={() => registerModal.setOpen()}
-          />
-        </div>
-      </Container>
+      <div className="mt-4">
+        <Container>
+          <h1 className="text-2xl font-bold m-4">
+            You need to be logged in to create a post
+          </h1>
+          <div className="flex gap-6 justify-center m-4">
+            <Button
+              actionLabel="Sign In"
+              onClick={() => loginModal.setOpen()}
+            />
+            <Button
+              secondary
+              actionLabel="Sign Up"
+              onClick={() => registerModal.setOpen()}
+            />
+          </div>
+        </Container>
+      </div>
     );
   }
   return (
-    <Container>
-      <div className="text-2xl font-bold my-4">{`${
-        currentUser?.name || "@" + currentUser?.username
-      }, anything to share?`}</div>
-      <motion.button
-        onClick={toggleExpand}
-        initial={{ rotate: 0 }}
-        transition={{ duration: 0.5 }}
-        animate={isExpanded ? "open" : "closed"}
-        variants={{
-          open: { rotate: 180 },
-          closed: { rotate: 0 },
-        }}
-        className="mx-auto my-2 border-2 border-slate-700 rounded-xl p-2"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-6 h-6"
+    <div className="mt-4">
+      <Container>
+        <div className="text-2xl font-bold my-4">{`${
+          currentUser?.name || "@" + currentUser?.username
+        }, anything to share?`}</div>
+        <motion.button
+          onClick={toggleExpand}
+          initial={{ rotate: 0 }}
+          transition={{ duration: 0.5 }}
+          animate={isExpanded ? "open" : "closed"}
+          variants={{
+            open: { rotate: 180 },
+            closed: { rotate: 0 },
+          }}
+          className="mx-auto my-2 border-2 border-slate-700 rounded-xl p-2"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="m4.5 15.75 7.5-7.5 7.5 7.5"
-          />
-        </svg>
-      </motion.button>
-      <AnimatePresence>
-        {isExpanded && (
-          <motion.div
-            initial={{ height: 0 }}
-            exit={{ height: 0 }}
-            animate={{ height: isExpanded ? "auto" : 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            onAnimationComplete={() => setFormAnimation("visible")}
-            onAnimationStart={() => setFormAnimation("hidden")}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
           >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m4.5 15.75 7.5-7.5 7.5 7.5"
+            />
+          </svg>
+        </motion.button>
+        <AnimatePresence>
+          {isExpanded && (
             <motion.div
-              initial="hidden"
-              exit="hidden"
-              animate={formAnimation}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1 },
-              }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              initial={{ height: 0 }}
+              exit={{ height: 0 }}
+              animate={{ height: isExpanded ? "auto" : 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              onAnimationComplete={() => setFormAnimation("visible")}
+              onAnimationStart={() => setFormAnimation("hidden")}
             >
-              <Form
-                onSubmit={(e: any) => {
-                  e.preventDefault();
-                  onSubmit();
+              <motion.div
+                initial="hidden"
+                exit="hidden"
+                animate={formAnimation}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1 },
                 }}
-                body={formBody}
-                actionLabel="Create Post"
-              />
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <Form
+                  onSubmit={(e: any) => {
+                    e.preventDefault();
+                    onSubmit();
+                  }}
+                  body={formBody}
+                  actionLabel="Create Post"
+                />
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </Container>
+          )}
+        </AnimatePresence>
+      </Container>
+    </div>
   );
 };
 

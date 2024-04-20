@@ -16,7 +16,7 @@ const Input: React.FC<InputProps> = ({
   maxLength,
 }) => {
   return (
-    <label className=" relative block rounded-2xl border border-white shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+    <label className=" w-full relative block rounded-2xl border border-white shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
       <input
         onChange={(e) => {
           e.preventDefault();

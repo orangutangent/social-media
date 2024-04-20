@@ -12,9 +12,9 @@ const Container: React.FC<Props> = ({ children }) => {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: "-100px" }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="flex justify-center mx-4 my-4 md:mx-auto"
+        className="flex justify-center mx-4  md:mx-auto overflow-hidden"
       >
-        <div className="text-center text-white w-full max-w-[600px] md:w-[600px]  border-2 border-slate-700 rounded-2xl  ">
+        <div className="text-center text-white w-full max-w-[600px] md:w-[600px] border-2 border-slate-700 rounded-2xl">
           {children}
         </div>
       </motion.div>

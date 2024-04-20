@@ -7,12 +7,25 @@ export async function GET(req: NextRequest) {
   try {
     const searchParams = req.nextUrl.searchParams;
     const followedBy = searchParams.get("followedBy");
+    const search = searchParams.get("search");
     let users;
     if (followedBy && typeof followedBy === "string") {
       users = await prisma.user.findMany({
         where: {
           followersIds: {
             has: followedBy,
+          },
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
+    } else if (search && typeof search === "string") {
+      users = await prisma.user.findMany({
+        where: {
+          username: {
+            contains: search,
+            mode: "insensitive",
           },
         },
         orderBy: {

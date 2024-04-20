@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <div>
       <CreatePost />
-      <div>
+      <div className="flex flex-col gap-4 mt-4">
         {posts?.map((post: any) => (
           <PostItem
             key={post.id}
