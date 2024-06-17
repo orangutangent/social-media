@@ -3,11 +3,11 @@ import React from "react";
 import Modal from "../Modal";
 import { useEditModal } from "@/hooks/useEditModal";
 import useCurrentUser from "@/hooks/useCurrentUser";
-import { useSession } from "next-auth/react";
-import Input from "../Input";
+import Input from "../ui/Input";
 import axios from "axios";
 import toast from "react-hot-toast";
 import useUser from "@/hooks/useUser";
+import FileInput from "../ui/FileInput";
 
 const EditModal = () => {
   const { data: CurrentUser } = useCurrentUser();
@@ -16,12 +16,14 @@ const EditModal = () => {
     name: "",
     username: "",
     bio: "",
+    image: "",
   });
   React.useEffect(() => {
     setUser({
       name: CurrentUser?.name,
       username: CurrentUser?.username,
       bio: CurrentUser?.bio,
+      image: CurrentUser?.image || "",
     });
   }, [CurrentUser]);
   const onSubmit = async () => {
@@ -64,6 +66,7 @@ const EditModal = () => {
         onChange={(e) => setUser({ ...user, bio: e.target.value })}
         value={user.bio}
       />
+      <FileInput  onChange={(file) => setUser({ ...user, image: "" })} />
     </div>
   );
   return (

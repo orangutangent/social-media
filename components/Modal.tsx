@@ -1,6 +1,6 @@
 "use client";
 import { AiOutlineClose } from "react-icons/ai";
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ModalProps {

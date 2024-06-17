@@ -7,9 +7,9 @@ interface Props {
 
 const UserAvatar: React.FC<Props> = ({ user, isLarge = false }) => {
   return (
-    <div className="rounded-full border-2 border-white w-fit ">
+    <div className="rounded-full overflow-hidden border-2 border-white w-fit ">
       {user?.image ? (
-        <div className="flex justify-center">
+        <div className="flex justify-center ">
           <Image
             src={user.image}
             width={isLarge ? 96 : 48}

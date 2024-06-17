@@ -10,7 +10,7 @@ interface Props {
 const PostFeed: React.FC<Props> = ({ posts, isLoading, username }) => {
   return (
     <div className="flex flex-col gap-4">
-      {posts?.map((post: any) => (
+      {posts && posts?.map((post: any) => (
         <PostItem
           key={post.id}
           userId={post.userId}

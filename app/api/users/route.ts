@@ -2,9 +2,11 @@ export const dynamic = "force-dynamic";
 
 import { NextResponse, NextRequest } from "next/server";
 import prisma from "@/libs/db";
+import serverAuth from "@/libs/serverAuth";
 
 export async function GET(req: NextRequest) {
   try {
+    const {currentUser} = await serverAuth();
     const searchParams = req.nextUrl.searchParams;
     const followedBy = searchParams.get("followedBy");
     const search = searchParams.get("search");
@@ -23,9 +25,22 @@ export async function GET(req: NextRequest) {
     } else if (search && typeof search === "string") {
       users = await prisma.user.findMany({
         where: {
-          username: {
-            contains: search,
-            mode: "insensitive",
+          OR:[
+            {
+              name: {
+                contains: search,
+                mode: "insensitive",
+              },
+            },
+            {
+              username: {
+                contains: search,
+                mode: "insensitive",
+              },
+            },
+          ],
+          id: {
+            not: currentUser?.id,
           },
         },
         orderBy: {

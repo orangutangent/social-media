@@ -1,6 +1,6 @@
 "use client";
 import useCurrentUser from "@/hooks/useCurrentUser";
-import Button from "../Button";
+import Button from "../ui/Button";
 import Container from "@/components/Container";
 import Image from "next/image";
 import { useEditModal } from "@/hooks/useEditModal";

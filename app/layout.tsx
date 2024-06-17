@@ -26,13 +26,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider session={session}>
-          <Toaster />
+          <Toaster position="top-center" />
           <EditModal />
           <LoginModal />
           <RegisterModal />
           <div>
             <NavPanel />
-            <div className="pt-16">{children}</div>
+            <div className="py-20">{children}</div>
           </div>
         </AuthProvider>
       </body>

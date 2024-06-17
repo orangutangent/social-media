@@ -2,7 +2,7 @@ import Container from "@/components/Container";
 import UserAvatar from "./UserAvatar";
 import useFollow from "@/hooks/useFollow";
 import useCurrentUser from "@/hooks/useCurrentUser";
-import Button from "../Button";
+import Button from "../ui/Button";
 import { useRouter } from "next/navigation";
 
 interface Props {

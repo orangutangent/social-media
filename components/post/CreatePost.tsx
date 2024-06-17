@@ -3,13 +3,13 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Form from "../Form";
 import React, { useRef, useState } from "react";
-import Input from "../Input";
+import Input from "../ui/Input";
 import { toast } from "react-hot-toast";
 import { AnimatePresence, motion } from "framer-motion";
 import Container from "../Container";
 import { useRegisterModal } from "@/hooks/useRegisterModal";
 import { useLoginModal } from "@/hooks/useLoginModal";
-import Button from "../Button";
+import Button from "../ui/Button";
 import useCurrentUser from "@/hooks/useCurrentUser";
 
 const CreatePost = () => {

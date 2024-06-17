@@ -2,7 +2,7 @@
 import { useLoginModal } from "@/hooks/useLoginModal";
 import { useRegisterModal } from "@/hooks/useRegisterModal";
 import Modal from "../Modal";
-import Input from "@/components/Input";
+import Input from "@/components/ui/Input";
 import React from "react";
 import { signIn } from "next-auth/react";
 import { motion } from "framer-motion";
