@@ -66,7 +66,7 @@ const EditModal = () => {
         onChange={(e) => setUser({ ...user, bio: e.target.value })}
         value={user.bio}
       />
-      <FileInput  onChange={(file) => setUser({ ...user, image: "" })} />
+      <FileInput  onChange={(file) => setUser({ ...user, image: file })} />
     </div>
   );
   return (
