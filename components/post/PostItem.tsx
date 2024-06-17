@@ -32,7 +32,7 @@ const PostItem: React.FC<Props> = ({ title, body, id, userId }) => {
 
   const router = useRouter();
   return (
-    <div className="flex flex-col gap-4 w-min mx-auto">
+    <div className="flex flex-col gap-4 w-full max-w-[600px] mx-auto">
       <Container>
         <div className="flex gap-4 m-4 items-center">
           <div className="flex flex-col">

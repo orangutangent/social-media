@@ -35,7 +35,7 @@ const CommentBoard:React.FC<Props> = ({postId}) => {
             animate={{ opacity: 1, y: 0, scaleY: 1 }}
             exit={{ opacity: 0, y: "-100px", scaleY: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className=" ps-10 w-full">
+            className=" ps-10 w-full pe-4 md:pe-0">
                 <AnimatePresence>
                      <div className="flex flex-col gap-4">
                         {comments?.map((comment: any) => (
