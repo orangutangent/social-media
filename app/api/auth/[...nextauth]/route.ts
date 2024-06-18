@@ -47,10 +47,12 @@ const authOptions = {
         if (email) {
           user = await prisma.user.findUnique({
             where: { email: credentials.username },
+            select: { id: true, hashedPassword: true, name: true, email: true, username: true }, // !!
           });
         } else {
           user = await prisma.user.findUnique({
             where: { username: credentials.username },
+            select: { id: true, hashedPassword: true, name: true, email: true, username: true }, // !!
           });
         }
         if (!user || !user?.hashedPassword)
@@ -60,12 +62,12 @@ const authOptions = {
           user.hashedPassword
         );
         if (!isCorrectPassword) throw new Error("invalid credentials");
+        console.log("Created new session for :",user);
         return {
           id: user.id,
           username: user.username,
           email: user.email,
           name: user.name,
-          image: user.image,
         } as User;
       },
     }),
